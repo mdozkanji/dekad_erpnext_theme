@@ -122,9 +122,12 @@ def get_desktop_pages():
     return {"custom_menu": False, "pages": parent_pages}
 
 def boot_session(bootinfo):
+    # Logo is always served from the app's bundled public/images folder, so it
+    # works on any host without relying on files uploaded to the File List.
+    default_logo = "/assets/naidapa_theme/images/logo.png"
     try:
         theme_settings = frappe.get_cached_doc("Theme Settings")
-        bootinfo.sidebar_logo = theme_settings.get("sidebar_logo") or "/files/dekad-logo.png"
+        bootinfo.sidebar_logo = theme_settings.get("sidebar_logo") or default_logo
         bootinfo.theme_settings = theme_settings.as_dict()
     except Exception:
-        bootinfo.sidebar_logo = "/files/dekad-logo.png"
+        bootinfo.sidebar_logo = default_logo

@@ -64,6 +64,10 @@ def get_context(context):
         }
     )
 
+    # Logo is always served from the app's bundled public/images folder, so it
+    # works on any host without relying on files uploaded to the File List.
+    default_logo = "/assets/naidapa_theme/images/logo.png"
+
     try:
         theme_settings = frappe.get_cached_doc("Theme Settings")
         context["theme_settings"] = theme_settings
@@ -71,10 +75,10 @@ def get_context(context):
             theme_settings.get("sidebar_logo")
             or frappe.get_website_settings("app_logo")
             or boot.get("app_logo_url")
-            or "/files/dekad-logo.png"
+            or default_logo
         )
     except Exception:
         context["theme_settings"] = frappe._dict()
-        context["app_logo"] = "/files/dekad-logo.png"
+        context["app_logo"] = default_logo
 
     return context

@@ -113,7 +113,7 @@
     };
 
     naidapa_theme.update_sidebar_logo = function () {
-        const logo_url = (frappe.boot && frappe.boot.sidebar_logo) || "/files/dekad-logo.png";
+        const logo_url = (frappe.boot && frappe.boot.sidebar_logo) || "/assets/naidapa_theme/images/logo.png";
         const $appLogo = $('.vertical-sidebar .app-logo');
 
         if ($appLogo.length) {
