@@ -130,6 +130,20 @@
         }
     };
 
+    naidapa_theme.bind_logout = function () {
+        // Desk is a SPA, so plain links would be intercepted/broken and the
+        // default user-menu markup shipped with this theme used href="javascript:;",
+        // which does nothing. Handle logout explicitly via Frappe's own helper.
+        $(document).off('click.naidapa_logout', '.naidapa-logout').on('click.naidapa_logout', '.naidapa-logout', function (e) {
+            e.preventDefault();
+            if (window.frappe && frappe.app && frappe.app.logout) {
+                frappe.app.logout();
+            } else {
+                window.location.href = '/api/method/logout';
+            }
+        });
+    };
+
     naidapa_theme.toggle_collapse = function (el, event) {
         if (event) {
             event.preventDefault();
@@ -175,6 +189,7 @@
         }
         naidapa_theme.remove_native_elements();
         naidapa_theme.update_sidebar_logo();
+        naidapa_theme.bind_logout();
         naidapa_theme.bind_collapse_events();
         naidapa_theme.highlight_active_route();
         naidapa_theme.mutate_workspace_container();
