@@ -2,7 +2,7 @@
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[0].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[0].use[3]!./assets/scss/responsive.scss ***!
   \************************************************************************************************************************************************************************************************************************/
 :root {
-  --primary: 15, 98, 106;
+  --primary: 21, 13, 64;
   --secondary: 98,98,98;
   --success: 10, 185, 100;
   --danger: 225, 78, 90;
@@ -11,8 +11,8 @@
   --light: 200, 185, 210;
   --dark: 40, 35, 45;
   --white: 255, 255, 255;
-  --font-color: #082f32;
-  --body-color: #f5fbfb;
+  --font-color: #1a133d;
+  --body-color: #f7f6fc;
   --bodybg-color: #f6f7fa;
   --font-light-color: #a0a0b0;
   --grid_color: rgba(144, 164, 246, 0.21);
@@ -60,7 +60,7 @@
 }
 
 .default {
-  --primary: 15, 98, 106;
+  --primary: 21, 13, 64;
   --secondary: 98,98,98;
 }
 

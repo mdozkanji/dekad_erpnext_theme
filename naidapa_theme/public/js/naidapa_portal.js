@@ -100,8 +100,8 @@
             const accountRows = document.querySelectorAll('.account-info > .col');
             const borderColors = [
                 'var(--np-primary)',           // First row: teal
-                '#10b981',                      // Second row: emerald
-                '#0d6b59',                      // Third row: dark teal
+                '#5b4fc4',                      // Second row: emerald
+                '#241a63',                      // Third row: dark teal
                 '#6366f1',                      // Fourth row: indigo
             ];
 

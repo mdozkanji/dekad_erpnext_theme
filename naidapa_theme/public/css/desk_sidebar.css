@@ -84,7 +84,7 @@
 }
 
 .naidapa-nav-item.active {
-    background-color: rgba(32, 178, 170, 0.1); /* Primary color w/ opacity */
+    background-color: rgba(21, 13, 64, 0.1); /* Primary color w/ opacity */
     color: var(--primary-color);
     border-left-color: var(--primary-color);
 }

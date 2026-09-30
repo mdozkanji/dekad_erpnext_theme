@@ -55,7 +55,9 @@ def get_context(context):
             "google_analytics_id": frappe.conf.get("google_analytics_id"),
             "google_analytics_anonymize_ip": frappe.conf.get("google_analytics_anonymize_ip"),
             "app_name": (
-                frappe.get_website_settings("app_name") or frappe.get_system_settings("app_name") or "Frappe"
+                frappe.get_website_settings("app_name")
+                or frappe.get_system_settings("app_name")
+                or "Dekad Software Solution"
             ),
             "menu_data": get_desktop_pages(),
             "pages": (get_desktop_pages().get("pages", []) if isinstance(get_desktop_pages(), dict) else get_desktop_pages()),
@@ -69,10 +71,10 @@ def get_context(context):
             theme_settings.get("sidebar_logo")
             or frappe.get_website_settings("app_logo")
             or boot.get("app_logo_url")
-            or "/files/dr-codex-logo.png"
+            or "/files/dekad-logo.png"
         )
     except Exception:
         context["theme_settings"] = frappe._dict()
-        context["app_logo"] = "/files/dr-codex-logo.png"
+        context["app_logo"] = "/files/dekad-logo.png"
 
     return context

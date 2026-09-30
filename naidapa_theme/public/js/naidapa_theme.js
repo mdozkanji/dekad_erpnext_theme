@@ -113,7 +113,7 @@
     };
 
     naidapa_theme.update_sidebar_logo = function () {
-        const logo_url = (frappe.boot && frappe.boot.sidebar_logo) || "/files/dr-codex-logo.png";
+        const logo_url = (frappe.boot && frappe.boot.sidebar_logo) || "/files/dekad-logo.png";
         const $appLogo = $('.vertical-sidebar .app-logo');
 
         if ($appLogo.length) {
@@ -287,11 +287,11 @@
                 <svg id="naidapa-global-gradient" width="0" height="0" style="position:absolute; width:0; height:0;">
                     <defs>
                         <linearGradient id="naidapa-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" stop-color="#0d6b59" />
-                            <stop offset="40%" stop-color="#10b981" />
-                            <stop offset="65%" stop-color="#73c76b" />
-                            <stop offset="85%" stop-color="#d4dda0" />
-                            <stop offset="100%" stop-color="#fdf4d6" />
+                            <stop offset="0%" stop-color="#241a63" />
+                            <stop offset="40%" stop-color="#5b4fc4" />
+                            <stop offset="65%" stop-color="#8f86dd" />
+                            <stop offset="85%" stop-color="#cdc8f2" />
+                            <stop offset="100%" stop-color="#efeafc" />
                         </linearGradient>
                     </defs>
                 </svg>

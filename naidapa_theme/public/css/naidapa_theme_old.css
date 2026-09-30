@@ -82,10 +82,6 @@
     --font-color: #1a133d;
     --body-color: #f7f6fc;
     --bodybg-color: #f6f7fa;
-    /* Fallback for ki_style.css / ki_responsive.css selectors that use
-       rgba(var(--ki-primary), x). Must stay in sync with the --ki-primary
-       defined above (21, 13, 64 = #150D40). */
-    --ki-primary: 21, 13, 64;
     --font-light-color: #a0a0b0;
     --grid_color: rgba(144, 164, 246, 0.21);
     --border_color: rgba(0, 0, 0, 0.21);
@@ -487,55 +483,6 @@ nav.vertical-sidebar .nav-profile-wrapper .user-avatar-circle {
     color: #150D40 !important;
 }
 
-/* --- Head-section sidebar items (Home, Buying, Selling...) --- */
-/* Frappe's own desk CSS paints active top-level workspace items with the
-   legacy --control-{bg,text}-active colors. Force them to the brand color
-   so head sections match the subsections. */
-:root {
-    --control-bg-active: rgba(21, 13, 64, 0.1) !important;
-    --control-text-active: #150D40 !important;
-    --control-item-bg-hover: rgba(21, 13, 64, 0.08) !important;
-    --control-item-bg-active: #150D40 !important;
-    --control-item-bg-active-hover: #0d0726 !important;
-    --control-item-text-active: #ffffff !important;
-}
-
-.vertical-sidebar .main-nav > li.sidebar-group-item > a.sidebar-group-header:hover,
-.vertical-sidebar .main-nav > li.sidebar-group-item > a.sidebar-group-header.active,
-.vertical-sidebar .main-nav > li.sidebar-group-item > a.sidebar-group-header[aria-current="page"],
-body[data-route="home"] .vertical-sidebar .main-nav > li.sidebar-group-item:first-child > a.sidebar-group-header {
-    background-color: rgba(21, 13, 64, 0.1) !important;
-    color: #150D40 !important;
-}
-
-.vertical-sidebar .main-nav > li.sidebar-group-item > a.sidebar-group-header:hover iconify-icon,
-.vertical-sidebar .main-nav > li.sidebar-group-item > a.sidebar-group-header:hover .sidebar-item-icon,
-.vertical-sidebar .main-nav > li.sidebar-group-item > a.sidebar-group-header.active iconify-icon,
-.vertical-sidebar .main-nav > li.sidebar-group-item > a.sidebar-group-header.active .sidebar-item-icon,
-.vertical-sidebar .main-nav > li.sidebar-group-item > a.sidebar-group-header[aria-current="page"] iconify-icon,
-.vertical-sidebar .main-nav > li.sidebar-group-item > a.sidebar-group-header[aria-current="page"] .sidebar-item-icon,
-body[data-route="home"] .vertical-sidebar .main-nav > li.sidebar-group-item:first-child > a.sidebar-group-header iconify-icon,
-body[data-route="home"] .vertical-sidebar .main-nav > li.sidebar-group-item:first-child > a.sidebar-group-header .sidebar-item-icon {
-    color: #150D40 !important;
-    stroke: #150D40 !important;
-}
-
-/* Solid brand pill when a head section is fully active (matches sub-items) */
-.vertical-sidebar .main-nav > li.sidebar-group-item > a.sidebar-group-header.active-pill,
-.vertical-sidebar .main-nav > li.sidebar-group-item > a.sidebar-group-header.active:not(.collapsed) {
-    background-color: #150D40 !important;
-    color: #ffffff !important;
-    box-shadow: 0 3px 10px rgba(21, 13, 64, 0.25) !important;
-}
-
-.vertical-sidebar .main-nav > li.sidebar-group-item > a.sidebar-group-header.active-pill iconify-icon,
-.vertical-sidebar .main-nav > li.sidebar-group-item > a.sidebar-group-header.active-pill .sidebar-item-label,
-.vertical-sidebar .main-nav > li.sidebar-group-item > a.sidebar-group-header.active:not(.collapsed) iconify-icon,
-.vertical-sidebar .main-nav > li.sidebar-group-item > a.sidebar-group-header.active:not(.collapsed) .sidebar-item-label {
-    color: #ffffff !important;
-    stroke: #ffffff !important;
-}
-
 /* Fix Group Header Chevron Arrow Vertical Position */
 nav .app-nav .main-nav > li:not(.menu-title) > a,
 .vertical-sidebar .main-nav > li > a {
@@ -794,26 +741,55 @@ nav .app-nav .main-nav>li.active>a iconify-icon {
     /* Ensure vector curves don't clip outside rounded corners */
 }
 
-/* Kill every decorative circle/bubble inside links-widget cards, everywhere */
-.links-widget-box,
-.widget.links .links-widget-box,
-[data-page-route][data-workspace] .links-widget-box,
-.ce-block .links-widget-box {
-    background-image: none !important;
+/* 6 Dynamic Overlapping Fluid "Wave" Patterns */
+/* Generates sharp, crisp curved vectors overlapping at bottom right and top-left */
+.ce-block:nth-child(6n+1) .links-widget-box {
+    background-image:
+        radial-gradient(circle at 100% 100%, rgba(122, 111, 206, 0.11) 25%, transparent 25.5%),
+        radial-gradient(ellipse 120% 80% at 85% 110%, rgba(122, 111, 206, 0.07) 40%, transparent 40.5%),
+        radial-gradient(ellipse 80% 100% at 0% 0%, rgba(122, 111, 206, 0.09) 20%, transparent 20.5%),
+        radial-gradient(circle at -5% 5%, rgba(122, 111, 206, 0.06) 30%, transparent 30.5%) !important;
 }
 
-.links-widget-box::after,
-.links-widget-box span[class*="circle"],
-.links-widget-box div[class*="circle"],
-.links-widget-box svg[class*="circle"] {
-    display: none !important;
-    content: none !important;
+.ce-block:nth-child(6n+2) .links-widget-box {
+    background-image:
+        radial-gradient(circle at 90% 110%, rgba(122, 111, 206, 0.09) 30%, transparent 30.5%),
+        radial-gradient(ellipse 80% 120% at 100% 85%, rgba(122, 111, 206, 0.06) 35%, transparent 35.5%),
+        radial-gradient(circle at 0% 0%, rgba(122, 111, 206, 0.07) 25%, transparent 25.5%),
+        radial-gradient(ellipse 100% 80% at 10% -10%, rgba(122, 111, 206, 0.10) 35%, transparent 35.5%) !important;
 }
 
-/* 6 Dynamic Overlapping Fluid "Wave" Patterns — REMOVED: all colored
-   circles/bubbles on links-widget cards are gone site-wide; cards are flat.
-   Any residual background decoration injected by other rules is suppressed
-   by the override at the end of this section. */
+.ce-block:nth-child(6n+3) .links-widget-box {
+    background-image:
+        radial-gradient(ellipse 100% 100% at 115% 90%, rgba(122, 111, 206, 0.10) 35%, transparent 35.5%),
+        radial-gradient(ellipse 130% 90% at 75% 115%, rgba(122, 111, 206, 0.07) 45%, transparent 45.5%),
+        radial-gradient(ellipse 90% 110% at -5% -5%, rgba(122, 111, 206, 0.09) 30%, transparent 30.5%),
+        radial-gradient(ellipse 110% 90% at 5% -15%, rgba(122, 111, 206, 0.06) 40%, transparent 40.5%) !important;
+}
+
+.ce-block:nth-child(6n+4) .links-widget-box {
+    background-image:
+        radial-gradient(ellipse 90% 110% at 105% 95%, rgba(122, 111, 206, 0.11) 25%, transparent 25.5%),
+        radial-gradient(circle at 65% 120%, rgba(122, 111, 206, 0.07) 40%, transparent 40.5%),
+        radial-gradient(circle at -10% -10%, rgba(122, 111, 206, 0.11) 35%, transparent 35.5%),
+        radial-gradient(ellipse 80% 120% at 15% -5%, rgba(122, 111, 206, 0.07) 25%, transparent 25.5%) !important;
+}
+
+.ce-block:nth-child(6n+5) .links-widget-box {
+    background-image:
+        radial-gradient(ellipse 110% 120% at 95% 115%, rgba(122, 111, 206, 0.10) 40%, transparent 40.5%),
+        radial-gradient(ellipse 80% 100% at 120% 80%, rgba(122, 111, 206, 0.06) 30%, transparent 30.5%),
+        radial-gradient(ellipse 100% 100% at -15% 10%, rgba(122, 111, 206, 0.10) 20%, transparent 20.5%),
+        radial-gradient(ellipse 120% 80% at 0% -5%, rgba(122, 111, 206, 0.06) 35%, transparent 35.5%) !important;
+}
+
+.ce-block:nth-child(6n+6) .links-widget-box {
+    background-image:
+        radial-gradient(ellipse 120% 100% at 105% 100%, rgba(122, 111, 206, 0.09) 30%, transparent 30.5%),
+        radial-gradient(ellipse 100% 130% at 85% 110%, rgba(122, 111, 206, 0.07) 45%, transparent 45.5%),
+        radial-gradient(circle at 5% -10%, rgba(122, 111, 206, 0.07) 30%, transparent 30.5%),
+        radial-gradient(ellipse 90% 100% at -10% 15%, rgba(122, 111, 206, 0.09) 25%, transparent 25.5%) !important;
+}
 
 /* 4. Button/Link Items (The Rows) inside Links Widget */
 .links-widget-box .link-item {
@@ -900,23 +876,86 @@ nav .app-nav .main-nav>li.active>a iconify-icon {
     z-index: 1;
 }
 
-/* Colored expanding corner circles removed site-wide (shortcut + links widget
-   cards) — ensure they never render, even if an older compiled bundle is
-   still cached in the browser */
-.shortcut-widget-box::before,
-.links-widget-box::before,
-.widget.shortcuts .shortcut-widget-box::before,
-.widget.links .links-widget-box::before {
+/* Unique Modern Element: Expanding accent corner */
+/*.shortcut-widget-box::before {
+    content: '';
+    position: absolute;
+    right: -24px;
+    top: -24px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    opacity: 0.3;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: -1;
+}
+*/
+.shortcut-widget-box::before {
     content: none !important;
     display: none !important;
     background: none !important;
 }
-
+/*
 .shortcut-widget-box:hover {
     transform: translateY(-4px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
 }
 
+.shortcut-widget-box:hover::before {
+    transform: scale(3.5);
+    opacity: 0.85;
+}
+*/
+/* Hover colored variations using parent nth-child */
+/*
+.ce-block:nth-child(6n+1) .shortcut-widget-box::before {
+    background-color: #86efac;
+}
+
+.ce-block:nth-child(6n+1) .shortcut-widget-box:hover .widget-control svg.es-icon {
+    stroke: #15803d !important;
+}
+
+.ce-block:nth-child(6n+2) .shortcut-widget-box::before {
+    background-color: #fcd34d;
+}
+
+.ce-block:nth-child(6n+2) .shortcut-widget-box:hover .widget-control svg.es-icon {
+    stroke: #b45309 !important;
+}
+
+.ce-block:nth-child(6n+3) .shortcut-widget-box::before {
+    background-color: #93c5fd;
+}
+
+.ce-block:nth-child(6n+3) .shortcut-widget-box:hover .widget-control svg.es-icon {
+    stroke: #1d4ed8 !important;
+}
+
+.ce-block:nth-child(6n+4) .shortcut-widget-box::before {
+    background-color: #f9a8d4;
+}
+
+.ce-block:nth-child(6n+4) .shortcut-widget-box:hover .widget-control svg.es-icon {
+    stroke: #be185d !important;
+}
+
+.ce-block:nth-child(6n+5) .shortcut-widget-box::before {
+    background-color: #fca5a5;
+}
+
+.ce-block:nth-child(6n+5) .shortcut-widget-box:hover .widget-control svg.es-icon {
+    stroke: #b91c1c !important;
+}
+
+.ce-block:nth-child(6n+6) .shortcut-widget-box::before {
+    background-color: #c4b5fd;
+}
+
+.ce-block:nth-child(6n+6) .shortcut-widget-box:hover .widget-control svg.es-icon {
+    stroke: #6d28d9 !important;
+}
+*/
 /* Content adjustments */
 .shortcut-widget-box .widget-head {
     padding: 0 !important;
@@ -1304,23 +1343,4 @@ span.sidebar-item-label {
 .page-head .btn {
     height: 32px !important;
     justify-content: center !important;
-}
-/* -------------------------------------------------------------------------- */
-/* FINAL SAFETY NET — remove ALL decorative circles/bubbles on widget cards   */
-/* (shortcut, links and number cards) site-wide. Placed last so it wins over  */
-/* every earlier rule in this file; !important wins over inline styles too.   */
-/* -------------------------------------------------------------------------- */
-.shortcut-widget-box::before,
-.links-widget-box::before,
-.number-widget-box::before {
-    content: none !important;
-    display: none !important;
-    background: none !important;
-    width: 0 !important;
-    height: 0 !important;
-}
-
-.shortcut-widget-box,
-.links-widget-box {
-    background-image: none !important;
 }
